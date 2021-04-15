@@ -2,6 +2,15 @@ import {categoryStore, todoStore} from '../storage';
 import uuid from 'react-native-uuid';
 import {TodoCategoryProps} from '../types';
 
+const DEFAULT_CATEGORY_ID = '@com.tasks.todoCategory_default';
+
+export const personalCategory: TodoCategoryProps = {
+  title: 'Personal',
+  description: '',
+  taskCount: 1,
+  id: DEFAULT_CATEGORY_ID,
+};
+
 export const healthCategory: TodoCategoryProps = {
   title: 'Health',
   description: '',
@@ -16,21 +25,14 @@ export const workCategory: TodoCategoryProps = {
   id: uuid.v4().toString(),
 };
 
-export const personalCategory: TodoCategoryProps = {
-  title: 'Personal',
-  description: '',
-  taskCount: 1,
-  id: uuid.v4().toString(),
+const setupInitialCategories = async () => {
+  await categoryStore.saveCategory(healthCategory);
+  await categoryStore.saveCategory(workCategory);
+  await categoryStore.saveCategory(personalCategory);
 };
 
-const setupInitialCategories = () => {
-  categoryStore.saveCategory(healthCategory);
-  categoryStore.saveCategory(workCategory);
-  categoryStore.saveCategory(personalCategory);
-};
-
-const setupInitialTasks = () => {
-  todoStore.saveTodo({
+const setupInitialTasks = async () => {
+  await todoStore.saveTodo({
     id: uuid.v4().toString(),
     title: 'Evening Walk',
     description: 'half an hour minimum',
@@ -38,7 +40,7 @@ const setupInitialTasks = () => {
     category: healthCategory,
   });
 
-  todoStore.saveTodo({
+  await todoStore.saveTodo({
     id: uuid.v4().toString(),
     title: 'Talk to yoga guy',
     description: 'Do it by this weekend',
@@ -46,7 +48,7 @@ const setupInitialTasks = () => {
     category: healthCategory,
   });
 
-  todoStore.saveTodo({
+  await todoStore.saveTodo({
     id: uuid.v4().toString(),
     title: 'Complete the assignment',
     description: 'with all the features',
@@ -54,7 +56,7 @@ const setupInitialTasks = () => {
     category: workCategory,
   });
 
-  todoStore.saveTodo({
+  await todoStore.saveTodo({
     id: uuid.v4().toString(),
     title: 'Get the Milk',
     description: '2 ltrs',
@@ -63,7 +65,7 @@ const setupInitialTasks = () => {
   });
 };
 
-export const setupInitialData = () => {
-  setupInitialCategories();
-  setupInitialTasks();
+export const setupInitialData = async () => {
+  await setupInitialCategories();
+  await setupInitialTasks();
 };

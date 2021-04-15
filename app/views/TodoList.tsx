@@ -1,5 +1,5 @@
 import {useFocusEffect} from '@react-navigation/core';
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import {StyleSheet, ScrollView, View} from 'react-native';
 import {
   TouchableOpacity,
@@ -63,12 +63,15 @@ const TodoList = ({todoCategory}: TodoListProps) => {
     }, []),
   );
 
-  useEffect(() => {
-    const selectedTodos = todoList.filter(
-      toto => toto.category?.id === todoCategory?.id,
-    );
-    setFilteredTodoList(selectedTodos);
-  }, [todoList, todoCategory]);
+  useFocusEffect(
+    useCallback(() => {
+      const selectedTodos = todoList.filter(toto => {
+        return toto.category.id === todoCategory.id;
+      });
+
+      setFilteredTodoList(selectedTodos);
+    }, [todoList, todoCategory]),
+  );
 
   const taskCompletedToggle = async (todo: TodoProps) => {
     todoStore.saveTodo(todo).then(() => {

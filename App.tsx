@@ -15,13 +15,12 @@ class App extends React.Component<AppProps, any> {
       initialSetupDone: false,
       defaultCategory: personalCategory,
     };
-    getData(INITAL_SETUP_STORAGE_KEY).then(value => {
+    getData(INITAL_SETUP_STORAGE_KEY).then(async value => {
       if (!value) {
-        setupInitialData();
-        saveData(INITAL_SETUP_STORAGE_KEY, 'true').then(() => {
-          this.setState({
-            initialSetupDone: true,
-          });
+        await setupInitialData();
+        await saveData(INITAL_SETUP_STORAGE_KEY, 'true');
+        this.setState({
+          initialSetupDone: true,
         });
       } else {
         this.setState({
