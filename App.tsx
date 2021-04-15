@@ -1,5 +1,5 @@
 import React from 'react';
-import {setupInitialData, allCategory} from './app/helpers';
+import {setupInitialData, personalCategory} from './app/helpers';
 import {getData, saveData} from './app/storage/Storage';
 import {Loader} from './app/components';
 import {TodoCategoryProps} from './app/types';
@@ -13,10 +13,9 @@ class App extends React.Component<AppProps, any> {
     super(props);
     this.state = {
       initialSetupDone: false,
-      defaultCategory: allCategory,
+      defaultCategory: personalCategory,
     };
     getData(INITAL_SETUP_STORAGE_KEY).then(value => {
-      console.log(value);
       if (!value) {
         setupInitialData();
         saveData(INITAL_SETUP_STORAGE_KEY, 'true').then(() => {

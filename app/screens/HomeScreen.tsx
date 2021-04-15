@@ -22,7 +22,6 @@ type ParamList = {
 const HomeScreen = () => {
   const navigation = useNavigation();
   const {params} = useRoute<RouteProp<ParamList, 'Category'>>();
-  console.log(params);
   const [selectedCategory, setSelectedCategory] = useState<TodoCategoryProps>(
     params.category,
   );
