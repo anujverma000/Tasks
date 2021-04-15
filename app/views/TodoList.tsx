@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 });
 
 interface TodoListProps {
-  todoCategory: TodoCategoryProps | undefined;
+  todoCategory: TodoCategoryProps;
 }
 
 const TodoList = ({todoCategory}: TodoListProps) => {

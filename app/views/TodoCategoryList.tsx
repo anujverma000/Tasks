@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
 interface TodoCategoryListProps {
   onCategoryChange: (props: TodoCategoryProps) => void;
 }
+
 const TodoCategoryList = ({onCategoryChange}: TodoCategoryListProps) => {
   const [selected, setSelected] = useState<number>(0);
   const navigation = useNavigation();
@@ -45,6 +46,7 @@ const TodoCategoryList = ({onCategoryChange}: TodoCategoryListProps) => {
       categoryStore.getAllCategories().then(setTodoCategories);
     }, []),
   );
+
   const selectCategory = ({
     index,
     todoCategory,

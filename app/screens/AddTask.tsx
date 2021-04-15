@@ -1,10 +1,11 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Header, NotePad} from '../components';
-import {todoStore} from '../storage';
+import {categoryStore, todoStore} from '../storage';
 import {NotesProps, TodoCategoryProps, TodoProps} from '../types';
 import uuid from 'react-native-uuid';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
+import {} from '../views/TodoCategoryList';
 
 type ParamList = {
   Category: {
@@ -24,9 +25,10 @@ const AddTask = () => {
       id: uuid.v4().toString(),
       category: todoCategory,
     };
-    console.log(todoCategory);
     if (todo.title) {
       todoStore.saveTodo(todo);
+      todoCategory.taskCount = todoCategory.taskCount + 1;
+      categoryStore.saveCategory(todoCategory);
       navigation.navigate('Home');
     }
   };

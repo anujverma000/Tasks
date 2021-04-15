@@ -58,7 +58,7 @@ const TodoCategory = ({
         {title}
       </Text>
       <Text style={[styles.count, selected ? styles.selectedCount : {}]}>
-       1
+        {taskCount}
       </Text>
     </LinearGradient>
   );

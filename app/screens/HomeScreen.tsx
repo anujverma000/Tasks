@@ -1,4 +1,4 @@
-import {useNavigation} from '@react-navigation/core';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Header, FAB} from '../components';
@@ -13,9 +13,19 @@ const styles = StyleSheet.create({
   },
 });
 
+type ParamList = {
+  Category: {
+    category: TodoCategoryProps;
+  };
+};
+
 const HomeScreen = () => {
   const navigation = useNavigation();
-  const [selectedCategory, setSelectedCategory] = useState<TodoCategoryProps>();
+  const {params} = useRoute<RouteProp<ParamList, 'Category'>>();
+  console.log(params);
+  const [selectedCategory, setSelectedCategory] = useState<TodoCategoryProps>(
+    params.category,
+  );
   return (
     <View style={styles.container}>
       <Header title="Your Tasks" />

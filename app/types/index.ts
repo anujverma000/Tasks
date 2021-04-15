@@ -7,10 +7,10 @@ export interface TodoCategoryProps {
 
 export interface TodoProps {
   id: string;
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
   completed: boolean;
-  category?: TodoCategoryProps;
+  category: TodoCategoryProps;
 }
 
 export type NotesProps = {
