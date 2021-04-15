@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {setupInitialData, personalCategory} from './app/helpers';
 import {getData, saveData} from './app/storage/Storage';
 import {Loader} from './app/components';
@@ -7,37 +7,28 @@ import RootNaviagtion from './app/navigation/RootNaviagtion';
 
 const INITAL_SETUP_STORAGE_KEY = '@com.tasks.initalSetup';
 
-export interface AppProps {}
-class App extends React.Component<AppProps, any> {
-  constructor(props: AppProps) {
-    super(props);
-    this.state = {
-      initialSetupDone: false,
-      defaultCategory: personalCategory,
-    };
+const App = () => {
+  const [initialSetupDone, setInitialSetupDone] = useState<boolean>(false);
+
+  useEffect(() => {
     getData(INITAL_SETUP_STORAGE_KEY).then(async value => {
       if (!value) {
         await setupInitialData();
         await saveData(INITAL_SETUP_STORAGE_KEY, 'true');
-        this.setState({
-          initialSetupDone: true,
-        });
+        setInitialSetupDone(true);
       } else {
-        this.setState({
-          initialSetupDone: true,
-        });
+        setInitialSetupDone(true);
       }
     });
-  }
+  }, []);
 
-  public render() {
-    if (!this.state.initialSetupDone) {
-      return <Loader />;
-    }
-    const params: {category: TodoCategoryProps} = {
-      category: this.state.defaultCategory,
-    };
-    return <RootNaviagtion params={params} />;
+  if (!initialSetupDone) {
+    return <Loader />;
   }
-}
+  const params: {category: TodoCategoryProps} = {
+    category: personalCategory,
+  };
+  return <RootNaviagtion params={params} />;
+};
+
 export default App;
