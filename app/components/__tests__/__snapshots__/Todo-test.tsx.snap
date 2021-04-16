@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "justifyContent": "center",
+      "paddingVertical": 8,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#8C8080",
+          "fontSize": 16,
+        },
+        Object {},
+      ]
+    }
+  >
+    Test Title
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#aba2a3",
+          "fontSize": 14,
+        },
+        Object {},
+      ]
+    }
+  >
+    Test Description
+  </Text>
+</View>
+`;

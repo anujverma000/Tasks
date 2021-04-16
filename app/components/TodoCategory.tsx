@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
 });
 
-interface TodoCategoryDisplyProps extends TodoCategoryProps {
+export interface TodoCategoryDisplyProps extends TodoCategoryProps {
   selected: boolean;
 }
 const TodoCategory = ({title, selected}: TodoCategoryDisplyProps) => {

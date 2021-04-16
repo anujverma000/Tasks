@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet, Pressable, I18nManager} from 'react-native';
 import languages from '../i18n/languages';
 import i18n from '../i18n';
-import {Header} from '../components';
+import {Header} from '../views';
 import {RouteProp, useRoute} from '@react-navigation/core';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import languageStrore from '../storage/LanguageStore';

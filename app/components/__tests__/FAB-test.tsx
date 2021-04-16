@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Button from '../Button';
+import FAB from '../FAB';
 
-it('Button renders correctly', () => {
+it('FAB renders correctly', () => {
   const props = {
     label: 'Test',
     onPress: () => {},
   };
-  const tree = renderer.create(<Button {...props} />).toJSON();
+  const tree = renderer.create(<FAB {...props} />).toJSON();
   expect(tree).toMatchSnapshot();
 });

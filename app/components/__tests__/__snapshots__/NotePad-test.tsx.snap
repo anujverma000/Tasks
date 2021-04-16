@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotePad renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#f4f4f6",
+      "padding": 24,
+    }
+  }
+>
+  <TextInput
+    allowFontScaling={true}
+    autoCapitalize="none"
+    autoFocus={true}
+    blurOnSubmit={false}
+    onChangeText={[Function]}
+    onSubmitEditing={[Function]}
+    placeholder="title Place holder"
+    placeholderTextColor="#8C8080"
+    rejectResponderTermination={true}
+    returnKeyType="next"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderTopLeftRadius": 6,
+        "borderTopRightRadius": 6,
+        "elevation": 1,
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "paddingHorizontal": 12,
+      }
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+  <TextInput
+    allowFontScaling={true}
+    autoCapitalize="none"
+    autoCompleteType="off"
+    multiline={true}
+    numberOfLines={6}
+    onChangeText={[Function]}
+    placeholder="description Placeholder"
+    placeholderTextColor="#8C8080"
+    rejectResponderTermination={true}
+    returnKeyType="send"
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomLeftRadius": 6,
+        "borderBottomRightRadius": 6,
+        "elevation": 1,
+        "fontSize": 14,
+        "justifyContent": "flex-start",
+        "lineHeight": 24,
+        "paddingHorizontal": 12,
+        "textAlignVertical": "top",
+      }
+    }
+    underlineColorAndroid="transparent"
+    value=""
+  />
+  <View
+    style={
+      Object {
+        "marginVertical": 12,
+      }
+    }
+  />
+</View>
+`;
