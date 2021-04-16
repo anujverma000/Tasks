@@ -7,4 +7,6 @@ export default {
   addCategory: 'Agregar una nueva categoría',
   saveCategory: 'Guardar categoría',
   noTasks: 'No hay tareas creadas aquí todavía.',
+  editTask: 'Editar tarea',
+  editCategory: 'Editar categoria',
 };

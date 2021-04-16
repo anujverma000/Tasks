@@ -7,4 +7,6 @@ export default {
   addCategory: 'Add a New Category',
   saveCategory: 'Save Category',
   noTasks: 'There are no tasks created here yet.',
+  editTask: 'Edit Task',
+  editCategory: 'Edit Category',
 };

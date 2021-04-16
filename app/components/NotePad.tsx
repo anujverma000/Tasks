@@ -37,11 +37,15 @@ interface Props {
   descriptionPlaceholder: string;
   submitText: string;
   onSubmit: (props: NotesProps) => void;
+  title?: string;
+  description?: string;
 }
 
 const NotePad = (props: Props) => {
-  const [title, setTitle] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
+  const [title, setTitle] = useState<string>(props.title || '');
+  const [description, setDescription] = useState<string>(
+    props.description || '',
+  );
   const headingEl = useRef<TextInput>(null);
   const descriptionEl = useRef<TextInput>(null);
   const onSave = () => {

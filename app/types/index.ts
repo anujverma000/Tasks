@@ -1,7 +1,6 @@
 export interface TodoCategoryProps {
   title: string;
   description: string;
-  taskCount: number;
   id: string;
 }
 

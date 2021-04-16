@@ -9,7 +9,6 @@ import i18n from '../i18n';
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: 140,
     flexGrow: 0,
   },
   addCategory: {
@@ -43,7 +42,9 @@ const TodoCategoryList = ({onCategoryChange}: TodoCategoryListProps) => {
   const [todoCategories, setTodoCategories] = useState<TodoCategoryProps[]>([]);
   useFocusEffect(
     useCallback(() => {
-      categoryStore.getAllCategories().then(setTodoCategories);
+      categoryStore.getAllCategories().then(categories => {
+        setTodoCategories(categories);
+      });
     }, []),
   );
 

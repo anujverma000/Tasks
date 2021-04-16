@@ -1,39 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Checkbox renders correctly 1`] = `
-<RNGestureHandlerButton
+<View
+  accessible={true}
   collapsable={false}
-  onGestureEvent={[Function]}
-  onGestureHandlerEvent={[Function]}
-  onGestureHandlerStateChange={[Function]}
-  onHandlerStateChange={[Function]}
-  rippleColor={0}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "paddingHorizontal": 12,
+    }
+  }
 >
   <View
-    accessible={true}
     style={
-      Object {
-        "opacity": 1,
-        "paddingHorizontal": 12,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "borderColor": "#aba2a3",
+          "borderRadius": 12,
+          "borderWidth": 3,
+          "height": 24,
+          "justifyContent": "center",
+          "width": 24,
+        },
+        Object {},
+      ]
     }
-  >
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "borderColor": "#aba2a3",
-            "borderRadius": 12,
-            "borderWidth": 3,
-            "height": 24,
-            "justifyContent": "center",
-            "width": 24,
-          },
-          Object {},
-        ]
-      }
-    />
-  </View>
-</RNGestureHandlerButton>
+  />
+</View>
 `;

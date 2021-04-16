@@ -1,4 +1,4 @@
-import {useFocusEffect} from '@react-navigation/core';
+import {useFocusEffect, useNavigation} from '@react-navigation/core';
 import React, {useState, useCallback} from 'react';
 import {StyleSheet, ScrollView, View, Pressable} from 'react-native';
 import {Checkbox, Todo} from '../components';
@@ -6,6 +6,7 @@ import {todoStore} from '../storage';
 import {TodoCategoryProps, TodoProps} from '../types';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import NoTask from './NoTask';
+import CategoryView from './CategoryView';
 
 const styles = StyleSheet.create({
   container: {
@@ -50,7 +51,7 @@ interface TodoListProps {
 const TodoList = ({todoCategory}: TodoListProps) => {
   const [todoList, setTodoList] = useState<TodoProps[]>([]);
   const [filteredTodoList, setFilteredTodoList] = useState<TodoProps[]>([]);
-
+  const navigation = useNavigation();
   useFocusEffect(
     useCallback(() => {
       todoStore.getAllTodos().then(todos => {
@@ -80,33 +81,42 @@ const TodoList = ({todoCategory}: TodoListProps) => {
     });
   };
   if (filteredTodoList.length === 0) {
-    return <NoTask />;
+    return (
+      <>
+        <CategoryView category={todoCategory} todos={filteredTodoList} />
+        <NoTask />
+      </>
+    );
   }
   return (
-    <ScrollView style={styles.container}>
-      {filteredTodoList.map(todo => (
-        <View style={styles.todoRow} key={todo.id}>
-          <View style={styles.select}>
-            <Checkbox
-              checked={todo.completed}
-              onChange={selected =>
-                taskCompletedToggle({...todo, completed: selected})
-              }
-            />
+    <>
+      <CategoryView category={todoCategory} todos={filteredTodoList} />
+      <ScrollView style={styles.container}>
+        {filteredTodoList.map(todo => (
+          <View style={styles.todoRow} key={todo.id}>
+            <View style={styles.select}>
+              <Checkbox
+                checked={todo.completed}
+                onChange={selected =>
+                  taskCompletedToggle({...todo, completed: selected})
+                }
+              />
+            </View>
+            <View style={styles.todo}>
+              <Pressable
+                onPress={() => navigation.navigate('EditTask', {todo})}>
+                <Todo {...todo} />
+              </Pressable>
+            </View>
+            {todo.completed && (
+              <Pressable style={styles.delete} onPress={() => deleteTodo(todo)}>
+                <Icon name="trash" size={18} color="#aba2a3" />
+              </Pressable>
+            )}
           </View>
-          <View style={styles.todo}>
-            <Pressable>
-              <Todo {...todo} />
-            </Pressable>
-          </View>
-          {todo.completed && (
-            <Pressable style={styles.delete} onPress={() => deleteTodo(todo)}>
-              <Icon name="trash" size={18} color="#aba2a3" />
-            </Pressable>
-          )}
-        </View>
-      ))}
-    </ScrollView>
+        ))}
+      </ScrollView>
+    </>
   );
 };
 

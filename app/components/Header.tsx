@@ -6,7 +6,7 @@ import Language from './Language';
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 24,
+    marginVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',

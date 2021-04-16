@@ -7,21 +7,18 @@ const DEFAULT_CATEGORY_ID = '@com.tasks.todoCategory_default';
 export const personalCategory: TodoCategoryProps = {
   title: 'Personal',
   description: '',
-  taskCount: 1,
   id: DEFAULT_CATEGORY_ID,
 };
 
 export const healthCategory: TodoCategoryProps = {
   title: 'Health',
   description: '',
-  taskCount: 2,
   id: uuid.v4().toString(),
 };
 
 export const workCategory: TodoCategoryProps = {
   title: 'Work',
   description: '',
-  taskCount: 1,
   id: uuid.v4().toString(),
 };
 

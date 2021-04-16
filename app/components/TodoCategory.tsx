@@ -10,13 +10,11 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     marginHorizontal: 4,
     width: 120,
-    height: 80,
     borderRadius: 6,
     elevation: 1,
   },
   selectedContainer: {
-    height: 120,
-    shadowColor: '#ff4a73',
+    paddingBottom: 42,
   },
   title: {
     fontSize: 14,
@@ -27,23 +25,12 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
   },
-  count: {
-    fontSize: 14,
-    color: '#aba2a3',
-  },
-  selectedCount: {
-    color: 'white',
-  },
 });
 
 interface TodoCategoryDisplyProps extends TodoCategoryProps {
   selected: boolean;
 }
-const TodoCategory = ({
-  title,
-  taskCount,
-  selected,
-}: TodoCategoryDisplyProps) => {
+const TodoCategory = ({title, selected}: TodoCategoryDisplyProps) => {
   const gradientColors = selected
     ? ['#fe9168', '#ff4a73']
     : ['#ffffff', '#f2f2f2'];
@@ -56,9 +43,6 @@ const TodoCategory = ({
       end={{x: 0, y: 1}}>
       <Text style={[styles.title, selected ? styles.selectedTitle : {}]}>
         {title}
-      </Text>
-      <Text style={[styles.count, selected ? styles.selectedCount : {}]}>
-        {taskCount}
       </Text>
     </LinearGradient>
   );

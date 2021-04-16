@@ -7,4 +7,6 @@ export default {
   addCategory: 'أضف فئة جديدة',
   saveCategory: 'حفظ الفئة',
   noTasks: 'لا توجد مهام تم إنشاؤها هنا حتى الآن.',
+  editTask: 'تحرير المهمة',
+  editCategory: 'تحرير الفئة',
 };

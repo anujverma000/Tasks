@@ -1,46 +1,42 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Header, NotePad} from '../components';
-import {todoStore} from '../storage';
-import {NotesProps, TodoCategoryProps, TodoProps} from '../types';
-import uuid from 'react-native-uuid';
+import {categoryStore} from '../storage';
+import {NotesProps, TodoCategoryProps} from '../types';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import i18n from '../i18n';
 
 type ParamList = {
   Category: {
-    selectedCategory: TodoCategoryProps;
+    category: TodoCategoryProps;
   };
 };
 
-const AddTask = () => {
+const EditCategory = () => {
   const navigation = useNavigation();
   const {params} = useRoute<RouteProp<ParamList, 'Category'>>();
-  const todoCategory = params.selectedCategory;
+  const category: TodoCategoryProps = params.category;
   const onSubmit = ({title, description}: NotesProps) => {
-    const todo: TodoProps = {
-      title: title.trim(),
-      description: description.trim(),
-      completed: false,
-      id: uuid.v4().toString(),
-      category: todoCategory,
-    };
-    if (todo.title) {
-      todoStore.saveTodo(todo);
+    category.title = title.trim();
+    category.description = description.trim();
+    if (category.title) {
+      categoryStore.saveCategory(category);
       navigation.navigate('Home');
     }
   };
   return (
     <View>
-      <Header title={i18n.t('addTask')} />
+      <Header title={i18n.t('editCategory')} />
       <NotePad
         titlePlaceholder={i18n.t('title')}
         descriptionPlaceholder={i18n.t('description')}
-        submitText={i18n.t('saveTask')}
+        submitText={i18n.t('saveCategory')}
         onSubmit={onSubmit}
+        title={category.title}
+        description={category.description}
       />
     </View>
   );
 };
 
-export default AddTask;
+export default EditCategory;

@@ -14,7 +14,6 @@ const AddCategory = () => {
     const category: TodoCategoryProps = {
       title: title.trim(),
       description: description.trim(),
-      taskCount: 0,
       id: uuid.v4().toString(),
     };
     if (category.title) {
