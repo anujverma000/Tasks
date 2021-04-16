@@ -1,6 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {StyleSheet, Text, Pressable} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 const styles = StyleSheet.create({
@@ -33,9 +32,9 @@ const FAB = ({label, onPress}: FABProps) => {
       style={styles.container}
       start={{x: 0, y: 0}}
       end={{x: 0, y: 1}}>
-      <TouchableOpacity style={styles.fabStyle} onPress={onPress}>
+      <Pressable style={styles.fabStyle} onPress={onPress}>
         <Text style={styles.fabTextStyle}>{label}</Text>
-      </TouchableOpacity>
+      </Pressable>
     </LinearGradient>
   );
 };

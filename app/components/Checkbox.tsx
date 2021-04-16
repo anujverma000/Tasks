@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {View, StyleSheet, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const styles = StyleSheet.create({
@@ -34,11 +33,11 @@ const Checkbox = ({checked, onChange}: Props) => {
     onChange(!selected);
   };
   return (
-    <TouchableOpacity style={styles.container} onPress={toggle}>
+    <Pressable style={styles.container} onPress={toggle}>
       <View style={[styles.checkbox, selected ? styles.selected : {}]}>
         {selected && <Icon name="check" size={18} color="#900" />}
       </View>
-    </TouchableOpacity>
+    </Pressable>
   );
 };
 

@@ -1,14 +1,15 @@
 import {useNavigation} from '@react-navigation/core';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+import {View, Text, StyleSheet, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Language from './Language';
 
 const styles = StyleSheet.create({
   container: {
     marginVertical: 24,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   heading: {
     color: '#8C8080',
@@ -30,13 +31,14 @@ const Header = ({title}: HeaderProps) => {
   return (
     <View style={styles.container}>
       {navigation.canGoBack() && (
-        <TouchableWithoutFeedback onPress={() => navigation.goBack()}>
+        <Pressable onPress={() => navigation.goBack()}>
           <View style={styles.back}>
             <Icon name="angle-left" size={24} color="#8C8080" />
           </View>
-        </TouchableWithoutFeedback>
+        </Pressable>
       )}
       <Text style={styles.heading}>{title}</Text>
+      <Language />
     </View>
   );
 };

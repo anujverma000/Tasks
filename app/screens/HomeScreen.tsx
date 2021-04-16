@@ -4,6 +4,7 @@ import {StyleSheet, View} from 'react-native';
 import {Header, FAB} from '../components';
 import {TodoCategoryProps} from '../types';
 import {TodoList, TodoCategoryList} from '../views';
+import i18n from '../i18n';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,13 +26,14 @@ const HomeScreen = () => {
   const [selectedCategory, setSelectedCategory] = useState<TodoCategoryProps>(
     params.category,
   );
+
   return (
     <View style={styles.container}>
-      <Header title="Your Tasks" />
+      <Header title={i18n.t('homeScreenHeader')} />
       <TodoCategoryList onCategoryChange={setSelectedCategory} />
       <TodoList todoCategory={selectedCategory} />
       <FAB
-        label="Add a new Task"
+        label={i18n.t('addTask')}
         onPress={() => navigation.navigate('AddTask', {selectedCategory})}
       />
     </View>

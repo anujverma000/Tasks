@@ -3,15 +3,16 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen, AddCategory, AddTask} from '../screens';
 import {TodoCategoryProps} from '../types';
+import ChangeLanguage, {LANG_TYPE} from '../screens/ChangeLanguage';
 
 type RootStackParamList = {
   Home: {category: TodoCategoryProps};
   AddTask: {selectedCategory: TodoCategoryProps};
   AddCategory: {};
+  ChangeLanguage: {lang: LANG_TYPE};
 };
 
 const RootStack = createStackNavigator<RootStackParamList>();
-
 export interface RootNaviagtionProps {
   params: {category: TodoCategoryProps};
 }
@@ -27,6 +28,7 @@ const RootNaviagtion = ({params}: RootNaviagtionProps) => {
         />
         <RootStack.Screen name="AddTask" component={AddTask} />
         <RootStack.Screen name="AddCategory" component={AddCategory} />
+        <RootStack.Screen name="ChangeLanguage" component={ChangeLanguage} />
       </RootStack.Navigator>
     </NavigationContainer>
   );

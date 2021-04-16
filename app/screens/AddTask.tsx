@@ -5,7 +5,7 @@ import {categoryStore, todoStore} from '../storage';
 import {NotesProps, TodoCategoryProps, TodoProps} from '../types';
 import uuid from 'react-native-uuid';
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
-import {} from '../views/TodoCategoryList';
+import i18n from '../i18n';
 
 type ParamList = {
   Category: {
@@ -34,11 +34,11 @@ const AddTask = () => {
   };
   return (
     <View>
-      <Header title="Add a New Task" />
+      <Header title={i18n.t('addTask')} />
       <NotePad
-        titlePlaceholder="Task Title"
-        descriptionPlaceholder="Little description is always better"
-        submitText="Save Task"
+        titlePlaceholder={i18n.t('title')}
+        descriptionPlaceholder={i18n.t('description')}
+        submitText={i18n.t('saveTask')}
         onSubmit={onSubmit}
       />
     </View>

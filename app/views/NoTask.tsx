@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import i18n from '../i18n';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,9 +16,7 @@ const styles = StyleSheet.create({
 const NoTask = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.descripton}>
-        There are no tasks created here yet.
-      </Text>
+      <Text style={styles.descripton}>{i18n.t('noTasks')}</Text>
     </View>
   );
 };

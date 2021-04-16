@@ -5,6 +5,7 @@ import {categoryStore} from '../storage';
 import {NotesProps, TodoCategoryProps} from '../types';
 import uuid from 'react-native-uuid';
 import {useNavigation} from '@react-navigation/core';
+import i18n from '../i18n';
 
 const AddCategory = () => {
   const navigation = useNavigation();
@@ -23,11 +24,11 @@ const AddCategory = () => {
   };
   return (
     <View>
-      <Header title="Add a New Category" />
+      <Header title={i18n.t('addCategory')} />
       <NotePad
-        titlePlaceholder="Category Title"
-        descriptionPlaceholder="Little description is always better"
-        submitText="Save Category"
+        titlePlaceholder={i18n.t('title')}
+        descriptionPlaceholder={i18n.t('description')}
+        submitText={i18n.t('saveCategory')}
         onSubmit={onSubmit}
       />
     </View>

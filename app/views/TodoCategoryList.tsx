@@ -1,10 +1,10 @@
 import {useFocusEffect, useNavigation} from '@react-navigation/core';
 import React, {useState, useCallback} from 'react';
-import {StyleSheet, ScrollView, Text} from 'react-native';
-import {TouchableWithoutFeedback} from 'react-native-gesture-handler';
+import {StyleSheet, ScrollView, Text, Pressable} from 'react-native';
 import TodoCategory from '../components/TodoCategory';
 import {categoryStore} from '../storage';
 import {TodoCategoryProps} from '../types';
+import i18n from '../i18n';
 
 const styles = StyleSheet.create({
   container: {
@@ -63,17 +63,17 @@ const TodoCategoryList = ({onCategoryChange}: TodoCategoryListProps) => {
       horizontal
       showsHorizontalScrollIndicator={false}>
       {todoCategories.map((todoCategory, index) => (
-        <TouchableWithoutFeedback
+        <Pressable
           key={todoCategory.id}
           onPress={() => selectCategory({index, todoCategory})}>
           <TodoCategory {...todoCategory} selected={index === selected} />
-        </TouchableWithoutFeedback>
+        </Pressable>
       ))}
-      <TouchableWithoutFeedback
+      <Pressable
         style={styles.addCategory}
         onPress={() => navigation.navigate('AddCategory')}>
-        <Text style={styles.label}>+ Add Category</Text>
-      </TouchableWithoutFeedback>
+        <Text style={styles.label}>+ {i18n.t('addCategory')}</Text>
+      </Pressable>
     </ScrollView>
   );
 };

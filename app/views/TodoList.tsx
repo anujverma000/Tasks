@@ -1,10 +1,6 @@
 import {useFocusEffect} from '@react-navigation/core';
 import React, {useState, useCallback} from 'react';
-import {StyleSheet, ScrollView, View} from 'react-native';
-import {
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native-gesture-handler';
+import {StyleSheet, ScrollView, View, Pressable} from 'react-native';
 import {Checkbox, Todo} from '../components';
 import {todoStore} from '../storage';
 import {TodoCategoryProps, TodoProps} from '../types';
@@ -99,16 +95,14 @@ const TodoList = ({todoCategory}: TodoListProps) => {
             />
           </View>
           <View style={styles.todo}>
-            <TouchableWithoutFeedback>
+            <Pressable>
               <Todo {...todo} />
-            </TouchableWithoutFeedback>
+            </Pressable>
           </View>
           {todo.completed && (
-            <TouchableOpacity
-              style={styles.delete}
-              onPress={() => deleteTodo(todo)}>
+            <Pressable style={styles.delete} onPress={() => deleteTodo(todo)}>
               <Icon name="trash" size={18} color="#aba2a3" />
-            </TouchableOpacity>
+            </Pressable>
           )}
         </View>
       ))}
