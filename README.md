@@ -37,4 +37,14 @@ App Support multiple languages
   - `yarn`
   - `npx pod-install` // make sure to update new cocoapods, because why not.
   - `yarn android`
+
+### Troubleshoot
+
+ ## Android
+  - `cd android`
+  - `./gradlew clean`
+  - `cd ..`
+  - `yarn android` // make sure emulator is open.
+
+Thanks a lot.
   
