@@ -1,9 +1,9 @@
 import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import React, {useState} from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Header, FAB} from '../components';
+import {FAB} from '../components';
 import {TodoCategoryProps} from '../types';
-import {TodoList, TodoCategoryList} from '../views';
+import {TodoList, TodoCategoryList, Header} from '../views';
 import i18n from '../i18n';
 
 const styles = StyleSheet.create({
